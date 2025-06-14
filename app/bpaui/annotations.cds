@@ -1,0 +1,1 @@
+using BPAServcie as service from '../../srv/bpa_srv';

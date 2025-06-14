@@ -1,0 +1,14 @@
+###
+
+POST http://localhost:4004/odata/v4/bpaservcie/BPA
+Content-Type: application/json
+
+{
+    "salesorderid": "003",
+    "salesOrderValue": 2000,
+    "currency": "USD"
+}
+
+###
+GET http://localhost:4004/odata/v4/bpaservcie/BPA
+Content-Type: application/json
