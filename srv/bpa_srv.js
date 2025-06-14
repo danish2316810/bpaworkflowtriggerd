@@ -4,7 +4,7 @@ const axios = require('axios');
 module.exports = (srv) => {
   srv.on("CREATE", "BPA", async (req) => {
     const { salesorderid, salesOrderValue, currency } = req.data;
-
+    console.log(req.user.clientId)
     // Basic validation
     if (!salesorderid || !currency || !salesOrderValue) {
       req.error(400, "All fields are required.");
@@ -14,6 +14,7 @@ module.exports = (srv) => {
     try {
       // Insert into DB using transaction
       const tx = cds.transaction(req);
+      console.log(req.user)
       await tx.run(
         INSERT.into('DB_BPA').entries(req.data)
       );
@@ -29,7 +30,8 @@ module.exports = (srv) => {
             context: {
               salesorderid,
               salesOrderValue,
-              currency
+              currency,
+              startedBy:'deeb.deeba786@gmail.com'
             }
           },
           {
