@@ -4,7 +4,7 @@ POST http://localhost:4004/odata/v4/bpaservcie/BPA
 Content-Type: application/json
 
 {
-    "salesorderid": "003",
+    "salesorderid": "0004",
     "salesOrderValue": 2000,
     "currency": "USD"
 }

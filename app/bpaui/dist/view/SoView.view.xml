@@ -1,0 +1,17 @@
+<mvc:View controllerName="app.bpaui.controller.SoView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+    <Page id="page" title="{i18n>title}">
+
+         <f:SimpleForm id="idForm" editable="true">
+         <Label text="sales order id"></Label>
+         <Input id="idSalesOr"></Input>
+         <Label text="sales order value"></Label>
+         <Input id="idSOVal"></Input>
+         <Label text="Currency"></Label>
+         <Input id="idCurr"></Input>
+         <Button press="onPress" text="submit"></Button>
+    </f:SimpleForm>
+    </Page>
+</mvc:View>

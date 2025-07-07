@@ -7,7 +7,11 @@
   "private": true,
   "dependencies": {
     "@cap-js/hana": "^1",
+    "@sap-cloud-sdk/http-client": "^4.0.2",
+    "@sap-cloud-sdk/resilience": "^4.0.2",
     "@sap/cds": "^8",
+    "@sap/hana-client": "^2.25.22",
+    "@sap/xsenv": "^5.6.1",
     "axios": "^1.9.0",
     "express": "^4"
   },
@@ -15,6 +19,7 @@
     "@cap-js/cds-types": "^0.10.0",
     "@cap-js/sqlite": "^1",
     "@sap/cds-dk": "^8",
+    "@sap/hdi-deploy": "4.9.5",
     "mbt": "^1.2.29",
     "rimraf": "^5.0.5"
   },
@@ -23,13 +28,24 @@
     "watch-bpaui": "cds watch --open bpaui/webapp/index.html?sap-ui-xx-viewCache=false",
     "undeploy": "cf undeploy callbpa2 --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
-    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "build:cf": "cds build --production"
   },
   "cds": {
     "requires": {
       "db": {
         "kind": "hana"
+      },
+      "workflow-api": {
+        "kind": "rest",
+        "credentials": {
+          "path": "/workflow/rest/v1",
+          "destination": "workflow-api"
+        }
       }
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
     }
   }
 }
